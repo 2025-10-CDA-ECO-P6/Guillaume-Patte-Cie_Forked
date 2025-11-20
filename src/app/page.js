@@ -2,22 +2,27 @@ import Link from "next/link";
 
 export default async function Home() { 
   const res = await fetch('http://localhost:3000/animals.json'); 
-
   const data = await res.json();
   const animaux = data.animaux;
 
   return (
     <div>
       <h1>Liste des animaux</h1>
-      <ul>
+      <div className="animalList">
         {animaux.map(animal => (
-          <li key={animal.id}>
-            <Link href={`/animals/${animal.id}`}>
-              {animal.nom} - {animal.espece}
-            </Link>
-          </li>
+          <Link 
+            key={animal.id}
+            href={`/animals/${animal.id}`}
+            className="animalCard"
+          >
+            <img src={`/${animal.photo}`} alt={animal.nom} />
+            <div>
+              <h2>{animal.nom}</h2>
+              <p>Espèce : {animal.espece}</p>
+            </div>      
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
