@@ -1,0 +1,140 @@
+{
+  "proprietaires": [
+    {
+      "id": 1,
+      "nom": "Martin",
+      "prenom": "Julie",
+      "telephone": "0601020304",
+      "email": "julie.martin@example.com",
+      "adresse": "12 Rue des Lilas, Paris"
+    },
+    {
+      "id": 2,
+      "nom": "Durand",
+      "prenom": "Paul",
+      "telephone": "0677889900",
+      "email": "paul.durand@example.com",
+      "adresse": "8 Avenue des Fleurs, Lyon"
+    }
+  ],
+
+  "animaux": [
+    {
+      "id": 1,
+      "nom": "Luna",
+      "espece": "Chat",
+      "race": "Bengal",
+      "sexe": "Femelle",
+      "date_naissance": "2021-05-10",
+      "poids": 3.5,
+      "photo": "img/Luna.jpg",
+      "id_proprietaire": 1
+    },
+    {
+      "id": 2,
+      "nom": "Rex",
+      "espece": "Chien",
+      "race": "Berger Australien",
+      "sexe": "Mâle",
+      "date_naissance": "2020-03-21",
+      "poids": 18.2,
+      "photo": "img/rex.jpg",
+      "id_proprietaire": 2
+    }
+  ],
+
+  "veterinaires": [
+    {
+      "id": 1,
+      "nom": "Lefèvre",
+      "prenom": "Simon"
+    }
+  ],
+
+  "visites": [
+    {
+      "id": 1,
+      "id_animal": 1,
+      "date": "2025-06-05",
+      "motif": "Vaccination annuelle",
+      "compte_rendu": "L'animal est en bonne santé générale.",
+      "id_veterinaire": 1,
+      "vaccins": [1],
+      "traitements": []
+    },
+    {
+      "id": 2,
+      "id_animal": 1,
+      "date": "2024-11-12",
+      "motif": "Contrôle général",
+      "compte_rendu": "Poids stable. RAS",
+      "id_veterinaire": 1,
+      "vaccins": [2],
+      "traitements": [1]
+    },
+
+    {
+      "id": 3,
+      "id_animal": 2,
+      "date": "2024-09-14",
+      "motif": "Vérification boiterie",
+      "compte_rendu": "Légère inflammation, recommandation de repos.",
+      "id_veterinaire": 1,
+      "vaccins": [],
+      "traitements": [2]
+    },
+    {
+      "id": 4,
+      "id_animal": 2,
+      "date": "2025-01-20",
+      "motif": "Vaccination CHPPi",
+      "compte_rendu": "Vaccin administré sans complication.",
+      "id_veterinaire": 1,
+      "vaccins": [3],
+      "traitements": []
+    }
+  ],
+
+  "vaccins": [
+    {
+      "id": 1,
+      "type": "Typhus",
+      "date": "2025-06-05",
+      "date_rappel": "2026-06-05",
+      "statut": "up_to_date"
+    },
+    {
+      "id": 2,
+      "type": "Rage",
+      "date": "2024-11-12",
+      "date_rappel": "2025-11-12",
+      "statut": "overdue"
+    },
+    {
+      "id": 3,
+      "type": "CHPPi",
+      "date": "2025-01-20",
+      "date_rappel": "2026-01-20",
+      "statut": "up_to_date"
+    }
+  ],
+
+  "traitements": [
+    {
+      "id": 1,
+      "nom": "Vermifuge",
+      "dosage": "1 pipette",
+      "date_debut": "2024-11-12",
+      "date_fin": "2024-11-19",
+      "observations": "Rien à signaler"
+    },
+    {
+      "id": 2,
+      "nom": "Anti-inflammatoire",
+      "dosage": "1 comprimé / jour",
+      "date_debut": "2024-09-14",
+      "date_fin": "2024-09-21",
+      "observations": "Réduction de la douleur observée"
+    }
+  ]
+}
