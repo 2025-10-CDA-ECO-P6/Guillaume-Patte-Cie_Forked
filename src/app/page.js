@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default async function Home() { 
   const res = await fetch('http://localhost:3000/animals.json'); 
 
@@ -10,7 +12,9 @@ export default async function Home() {
       <ul>
         {animaux.map(animal => (
           <li key={animal.id}>
-            {animal.nom} - {animal.espece}
+            <Link href={`/animals/${animal.id}`}>
+              {animal.nom} - {animal.espece}
+            </Link>
           </li>
         ))}
       </ul>
