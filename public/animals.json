@@ -34,11 +34,11 @@
       "id": 2,
       "nom": "Rex",
       "espece": "Chien",
-      "race": "Berger Australien",
+      "race": "Shiba Inu",
       "sexe": "Mâle",
       "date_naissance": "2020-03-21",
       "poids": 18.2,
-      "photo": "img/rex.jpg",
+      "photo": "images/animals/chien.png",
       "id_proprietaire": 2
     }
   ],
