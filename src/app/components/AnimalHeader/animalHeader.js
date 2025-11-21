@@ -1,6 +1,6 @@
 import styles from './animalHeader.module.css';
 
-export default function AnimalHeader({ animal }) {
+export default function AnimalHeader({ animal, proprietaire }) {
     return (
         <div className={styles.animalCard}>
             <img
@@ -15,6 +15,9 @@ export default function AnimalHeader({ animal }) {
                 <p>Sexe: {animal.sexe}</p>
                 <p>Date de naissance: {animal.date_naissance}</p>
                 <p>Poids: {animal.poids} kg</p>
+                {proprietaire && (
+                    <p>Propriétaire: {proprietaire.prenom} {proprietaire.nom}</p>
+                )}
             </div>
         </div>
     );
