@@ -1,5 +1,5 @@
 "use client";
-import styles from './animalTabs.module.css';
+import styles from './AnimalTabs.module.css';
 
 export default function AnimalTabs({activeTab, onTabChange}) {
   return (

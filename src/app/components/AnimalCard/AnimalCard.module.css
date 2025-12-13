@@ -14,7 +14,6 @@
   color: white;
 }
 
-/* Facultatif maintenant car .animal-card fait déjà flex */
 .animal-card-content {
   display: flex;
   align-items: center;

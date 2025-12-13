@@ -1,18 +1,22 @@
-import AnimalCard from "./components/AnimalCard/animalCard";
+import AnimalCard from "@/app/components/AnimalCard/AnimalCard";
+import data from "@/../public/animals.json";
+import styles from "./page.module.css";
 
-export default async function Home() {
-  const res = await fetch("http://localhost:3000/animals.json");
-  const data = await res.json();
-
+export default function HomePage() {
   const animaux = data.animaux;
 
   return (
-    <div style={{ padding: "16px" }}>
-      <h1>Liste des animaux</h1>
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <h1 className={styles.title}>🐾 Patte & Cie</h1>
+        <p className={styles.subtitle}>Carnet de santé digital</p>
+      </header>
 
-      {animaux.map(animal => (
-        <AnimalCard key={animal.id} animal={animal} />
-      ))}
+      <div className={styles.animalGrid}>
+        {animaux.map(animal => (
+          <AnimalCard key={animal.id} animal={animal} />
+        ))}
+      </div>
     </div>
   );
 }

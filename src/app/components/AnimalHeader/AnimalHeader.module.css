@@ -1,0 +1,94 @@
+.header {
+  background: linear-gradient(135deg, #8b7cff 0%, #a89eff 100%);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  color: white;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(139, 124, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.imageContainer {
+  position: relative;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.animalImage {
+  width: 150px;
+  height: 150px;
+  border-radius: 1rem;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.infoContainer {
+  flex: 1;
+  z-index: 1;
+}
+
+.animalName {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  color: white;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: auto 1fr;  
+  gap: 0.75rem 1rem;  
+}
+
+.detailItem {
+  display: contents;  
+  font-size: 1rem;
+}
+
+.label {
+  font-weight: 600;
+  opacity: 0.9;
+  text-align: space-evenly;  
+}
+
+.value {
+  font-weight: 500;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .animalImage {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .animalName {
+    font-size: 1.5rem;
+  }
+  
+  .detailItem {
+    justify-content: center;
+  }
+}

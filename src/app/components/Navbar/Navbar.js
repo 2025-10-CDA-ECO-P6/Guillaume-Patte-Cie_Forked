@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "./navbar.module.css";
+import styles from "./Navbar.module.css";
 import { Home } from "lucide-react";
 
 export default function Navbar() {

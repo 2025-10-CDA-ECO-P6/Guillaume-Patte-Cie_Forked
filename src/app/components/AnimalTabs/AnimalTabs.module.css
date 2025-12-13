@@ -1,0 +1,51 @@
+.AnimalTabs {
+  display: flex;
+  gap: 0.5rem;
+  background: #f7fafc;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.inactive {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #718096;
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.inactive:hover {
+  background: rgba(139, 124, 255, 0.1);
+  color: #8b7cff;
+}
+
+.inactive.active {
+  background: white;
+  color: #8b7cff;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.tabs {
+  margin-bottom: 1.5rem;
+}
+
+.tabContent {
+  min-height: 200px;
+}
+
+.noData {
+  text-align: center;
+  color: #a0aec0;
+  font-size: 0.9375rem;
+  padding: 3rem 1rem;
+  background: #f7fafc;
+  border-radius: 0.75rem;
+  margin: 0;
+}

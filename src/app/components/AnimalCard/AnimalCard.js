@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "./animalCard.module.css";
+import styles from "./AnimalCard.module.css";
 
 export default function AnimalCard({ animal }) {
   return (
