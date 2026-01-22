@@ -1,10 +1,14 @@
+"use client";
+
+import { useReferences } from "@/app/contexte/ReferenceContext";
 import styles from "./VisitCard.module.css";
 import { formatDate } from "@/app/utils/utils";
 
 export default function VisitCard({ visite }) {
-  const { description, careDate, vaccines = [], treatments = [], veterinarian } = visite;
+  const { vaccines: allVaccines, veterinarians } = useReferences();
+  const { description, careDate, vaccines = [], treatments = [], veterinarianId } = visite;
 
-  const formatDate = (dateStr) => new Date(dateStr).toLocaleDateString("fr-FR");
+  const veterinarian = veterinarians.find((v) => v.id == veterinarianId);
 
   return (
     <div className={styles.visitCard}>
@@ -15,7 +19,7 @@ export default function VisitCard({ visite }) {
         </div>
         {veterinarian && (
           <p className={styles.veterinaire}>
-            Dr. {veterinarian.prenom} {veterinarian.nom}
+            Dr. {veterinarian.firstName} {veterinarian.lastName}
           </p>
         )}
       </div>
@@ -25,12 +29,15 @@ export default function VisitCard({ visite }) {
           <div className={styles.section}>
             <h4 className={styles.sectionTitle}>Vaccins administrés</h4>
             <ul className={styles.list}>
-              {vaccines.map((v) => (
-                <li key={v.id} className={styles.listItem}>
-                  <span className={styles.bullet}>💉</span>
-                  {v.vaccineType?.name || v.name}
-                </li>
-              ))}
+              {vaccines.map((v) => {
+                const vaccineName = v.vaccineTypeId && allVaccines.find((vt) => vt.id === v.vaccineTypeId)?.name;
+                return (
+                  <li key={v.id} className={styles.listItem}>
+                    <span className={styles.bullet}>💉</span>
+                    {vaccineName || v.name}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         )}

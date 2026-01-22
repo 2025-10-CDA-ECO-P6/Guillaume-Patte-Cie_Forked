@@ -33,9 +33,7 @@ export default function AnimalTabsWrapper({ animalId, data }) {
   if (loading) return <p>Chargement...</p>;
   if (!healthRecord) return <p>Aucun dossier médical trouvé</p>;
 
-  const visites = healthRecord.medicalCares.filter((care) =>
-    care.tags.some((tag) => tag.name === "Consultation" || tag.name === "Contrôle"),
-  );
+  const visites = healthRecord.medicalCares
 
   const vaccines = healthRecord.medicalCares
     .filter((care) => care.tags.some((tag) => tag.name === "Vaccin"))

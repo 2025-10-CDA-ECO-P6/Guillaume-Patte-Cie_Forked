@@ -1,10 +1,11 @@
-import { Manrope } from 'next/font/google';
-import Navbar from './components/Navbar/Navbar';
-import './globals.css';
+import { Manrope } from "next/font/google";
+import Navbar from "./components/Navbar/Navbar";
+import "./globals.css";
+import { ReferenceProvider } from "./contexte/ReferenceContext";
 
 const manrope = Manrope({
-  subsets: ['latin'],
-  variable: '--font-manrope',
+  subsets: ["latin"],
+  variable: "--font-manrope",
 });
 
 export const metadata = {
@@ -14,11 +15,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={manrope.variable} suppressHydrationWarning>
-        {children}
-        <Navbar />
-      </body>
-    </html>
+    <ReferenceProvider>
+      <html lang="en">
+        <body className={manrope.variable} suppressHydrationWarning>
+          {children}
+          <Navbar />
+        </body>
+      </html>
+    </ReferenceProvider>
   );
 }

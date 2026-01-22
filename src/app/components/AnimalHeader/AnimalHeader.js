@@ -1,8 +1,14 @@
+"use client";
+
+import { useReferences } from "@/app/contexte/ReferenceContext";
 import styles from "./AnimalHeader.module.css";
 import { calculateAge } from "@/app/utils/utils";
 
 export default function AnimalHeader({ animal, proprietaire }) {
+  const { species } = useReferences();
   const age = calculateAge(animal.birthDate);
+
+  const speciesName = species.find((s) => s.id === animal.speciesId)?.name || "Inconnu";
 
   return (
     <div className={styles.header}>
@@ -16,12 +22,7 @@ export default function AnimalHeader({ animal, proprietaire }) {
         <div className={styles.details}>
           <div className={styles.detailItem}>
             <span className={styles.label}>Espèce:</span>
-            <span className={styles.value}>{animal.speciesId}</span>
-          </div>
-
-          <div className={styles.detailItem}>
-            <span className={styles.label}>Race:</span>
-            <span className={styles.value}>{animal.speciesId}</span>
+            <span className={styles.value}>{speciesName}</span>
           </div>
 
           <div className={styles.detailItem}>
@@ -30,7 +31,7 @@ export default function AnimalHeader({ animal, proprietaire }) {
           </div>
 
           <div className={styles.detailItem}>
-            <span className={styles.label}>Poid:</span>
+            <span className={styles.label}>Poids:</span>
             <span className={styles.value}>{animal.weight} kg</span>
           </div>
 
