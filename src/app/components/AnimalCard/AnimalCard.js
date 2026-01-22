@@ -5,20 +5,13 @@ export default function AnimalCard({ animal }) {
   return (
     <Link href={`/animals/${animal.id}`} className={styles.link}>
       <div className={styles["animal-card"]}>
-        
-        <img
-          src={`/${animal.photo}`}
-          alt={animal.nom}
-          className={styles["animal-photo"]}
-        />
+        <img src={`/${animal.photoUrl}`} alt={animal.nom} className={styles["animal-photo"]} />
 
         <div className={styles["animal-info"]}>
-          <h3>{animal.nom}</h3>
-          <p>{animal.espece}</p>
+          <h3>{animal.name}</h3>
+          <p>{animal.speciesId}</p>
         </div>
-
       </div>
     </Link>
   );
 }
-

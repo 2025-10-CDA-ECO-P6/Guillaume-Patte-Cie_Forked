@@ -1,53 +1,48 @@
-import styles from './VisitCard.module.css';
-import { formatDate } from '@/app/utils/utils';
+import styles from "./VisitCard.module.css";
+import { formatDate } from "@/app/utils/utils";
 
-export default function VisitCard({ visite, vaccins, traitements, veterinaire }) {
-  // Récupérer les vaccins et traitements liés à cette visite
-  const visiteVaccins = vaccins.filter(v => visite.vaccins.includes(v.id));
-  const visiteTraitements = traitements.filter(t => visite.traitements.includes(t.id));
-  
+export default function VisitCard({ visite }) {
+  const { description, careDate, vaccines = [], treatments = [], veterinarian } = visite;
+
+  const formatDate = (dateStr) => new Date(dateStr).toLocaleDateString("fr-FR");
+
   return (
     <div className={styles.visitCard}>
       <div className={styles.header}>
         <div className={styles.headerTop}>
-          <h3 className={styles.motif}>{visite.motif}</h3>
-          <span className={styles.date}>{formatDate(visite.date)}</span>
+          <h3 className={styles.motif}>{description}</h3>
+          <span className={styles.date}>{formatDate(careDate)}</span>
         </div>
-        {veterinaire && (
+        {veterinarian && (
           <p className={styles.veterinaire}>
-            Dr. {veterinaire.prenom} {veterinaire.nom}
+            Dr. {veterinarian.prenom} {veterinarian.nom}
           </p>
         )}
       </div>
-      
+
       <div className={styles.content}>
-        <div className={styles.section}>
-          <h4 className={styles.sectionTitle}>Compte rendu</h4>
-          <p className={styles.compteRendu}>{visite.compte_rendu}</p>
-        </div>
-        
-        {visiteVaccins.length > 0 && (
+        {vaccines.length > 0 && (
           <div className={styles.section}>
             <h4 className={styles.sectionTitle}>Vaccins administrés</h4>
             <ul className={styles.list}>
-              {visiteVaccins.map(v => (
+              {vaccines.map((v) => (
                 <li key={v.id} className={styles.listItem}>
                   <span className={styles.bullet}>💉</span>
-                  {v.type}
+                  {v.vaccineType?.name || v.name}
                 </li>
               ))}
             </ul>
           </div>
         )}
-        
-        {visiteTraitements.length > 0 && (
+
+        {treatments.length > 0 && (
           <div className={styles.section}>
             <h4 className={styles.sectionTitle}>Traitements prescrits</h4>
             <ul className={styles.list}>
-              {visiteTraitements.map(t => (
+              {treatments.map((t) => (
                 <li key={t.id} className={styles.listItem}>
                   <span className={styles.bullet}>💊</span>
-                  {t.nom} - {t.dosage}
+                  {t.nom} - {t.dosage || ""}
                 </li>
               ))}
             </ul>
