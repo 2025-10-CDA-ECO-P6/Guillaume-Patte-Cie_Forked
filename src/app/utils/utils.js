@@ -6,13 +6,13 @@
 export function calculateAge(dateNaissance) {
   const birthDate = new Date(dateNaissance);
   const today = new Date();
-  
+
   const ageInMs = today - birthDate;
   const ageInYears = ageInMs / (1000 * 60 * 60 * 24 * 365.25);
-  
+
   if (ageInYears >= 1) {
     const years = Math.floor(ageInYears);
-    return `${years} ${years === 1 ? 'an' : 'ans'}`;
+    return `${years} ${years === 1 ? "an" : "ans"}`;
   } else {
     const months = Math.floor(ageInYears * 12);
     return `${months} mois`;
@@ -25,8 +25,12 @@ export function calculateAge(dateNaissance) {
  * @returns {string} - Date formatée (ex: "05/06/2025")
  */
 export function formatDate(date) {
-  if (!date) return '';
-  const [year, month, day] = date.split('-');
+  if (!date) return "";
+  const d = new Date(date);
+  if (isNaN(d)) return "";
+  const day = String(d.getDate()).padStart(2, "0");
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const year = d.getFullYear();
   return `${day}/${month}/${year}`;
 }
 
@@ -37,9 +41,9 @@ export function formatDate(date) {
  */
 export function getVaccineStatusLabel(statut) {
   const labels = {
-    'up_to_date': 'À jour',
-    'overdue': 'En retard',
-    'upcoming': 'Bientôt'
+    up_to_date: "À jour",
+    overdue: "En retard",
+    upcoming: "Bientôt",
   };
   return labels[statut] || statut;
 }
@@ -50,7 +54,7 @@ export function getVaccineStatusLabel(statut) {
  * @returns {string} - Nom de la classe CSS
  */
 export function getVaccineStatusClass(statut) {
-  return `status-${statut.replace('_', '-')}`;
+  return `status-${statut.replace("_", "-")}`;
 }
 
 /**
@@ -71,12 +75,12 @@ export function calculateVaccineStatus(dateRappel) {
   const today = new Date();
   const rappelDate = new Date(dateRappel);
   const diffInDays = (rappelDate - today) / (1000 * 60 * 60 * 24);
-  
+
   if (diffInDays < 0) {
-    return 'overdue';
+    return "overdue";
   } else if (diffInDays <= 30) {
-    return 'upcoming';
+    return "upcoming";
   } else {
-    return 'up_to_date';
+    return "up_to_date";
   }
 }
